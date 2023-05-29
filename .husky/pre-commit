@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+yarn lint:check 
+
+# this mean that before commit it will run lint:check and analysis if there is any error in code . 
