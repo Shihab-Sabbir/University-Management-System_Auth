@@ -2,7 +2,6 @@
 import { createLogger, format, transports } from 'winston'
 import DailyRotateFile from 'winston-daily-rotate-file'
 import path from 'path'
-//import { NODE_ENV } from '../config'
 
 const { combine, label, prettyPrint, printf } = format
 
@@ -70,17 +69,5 @@ const errorLogger = createLogger({
     }),
   ],
 })
-
-// If we're not in production then log to the `console` with the format:
-// `${info.level}: ${info.message} JSON.stringify({ ...rest }) `
-//
-
-// if (NODE_ENV !== 'production') {
-//   logger.add(
-//     new winston.transports.Console({
-//       format: winston.format.simple(),
-//     })
-//   )
-// }
 
 export { logger, errorLogger }
