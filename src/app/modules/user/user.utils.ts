@@ -1,4 +1,4 @@
-import User from './users.model'
+import User from './user.model'
 
 export const findLastUserId = async () => {
   const lastUser = await User.findOne({}, { _id: 0, id: 1 })
@@ -7,7 +7,6 @@ export const findLastUserId = async () => {
     })
     .lean()
   // lean() used for get a pure js object not mongodb document.
-
   return lastUser?.id
 }
 

@@ -1,0 +1,25 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 1
+    },
+    "auditLog": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\apiRequest\\.6376cdab765dbf07bfd46b06c134220b259415b6-audit.json",
+    "files": [
+        {
+            "date": 1686054304792,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\apiRequest\\2023-06-06-18.log",
+            "hash": "969c4248454d1cb1a4cfe366ea8b035f964b3695c7f3e5d30aaaf9f9fd15132b"
+        },
+        {
+            "date": 1686078597727,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\apiRequest\\2023-06-07-01.log",
+            "hash": "1b584d9f2a6a8b2354c17242ea56fce6c080246c5da3a6e11c23e17e5de08d6f"
+        },
+        {
+            "date": 1686081604262,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\apiRequest\\2023-06-07-02.log",
+            "hash": "d3c22312a782576bd76b633e811c2bd72d942021cff04f18a58c35b17217b030"
+        }
+    ],
+    "hashType": "sha256"
+}

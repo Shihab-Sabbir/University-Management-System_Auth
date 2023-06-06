@@ -1,9 +1,5 @@
-import { Model, Schema, model } from 'mongoose'
-import { IUser } from './users.interface'
-
-type UserModel = Model<IUser, object>
-// here object is the replacement of {}.
-// here UserModel is used if any future methods are added to this model. withour methods this type UserModel is not required. only Iuser in enough.
+import { Schema, model } from 'mongoose'
+import { IUser, UserModel } from './user.interface'
 
 const userSchema = new Schema<IUser, UserModel>(
   {
@@ -19,7 +15,7 @@ const userSchema = new Schema<IUser, UserModel>(
     },
     password: {
       type: String,
-      required: true,
+      //required: true,
     },
   },
   {

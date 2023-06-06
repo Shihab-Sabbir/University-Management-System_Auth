@@ -1,15 +1,105 @@
 {
-  "keep": {
-    "days": true,
-    "amount": 14
-  },
-  "auditLog": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\success\\.527d8d914dd50d563d5fb723bf8988f264bb37f2-audit.json",
-  "files": [
-    {
-      "date": 1685732546723,
-      "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\success\\2023-06-03-01.log",
-      "hash": "5ffd5fcb740122843dfe7f06cb711928cd124b6948df83edebc74e3bd1a6d69d"
-    }
-  ],
-  "hashType": "sha256"
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\success\\.527d8d914dd50d563d5fb723bf8988f264bb37f2-audit.json",
+    "files": [
+        {
+            "date": 1685736048896,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\success\\2023-06-03-02.log",
+            "hash": "7e9c7593406e1923dd103937a8d8b128c7accd258d1a8d00fa1df4915fd847df"
+        },
+        {
+            "date": 1685795766986,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\success\\2023-06-03-18.log",
+            "hash": "c35c1dd0aaa0d23582866668f5c4e4ce52a8a7fc3c80913631a9628f68b90232"
+        },
+        {
+            "date": 1685797201319,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\success\\2023-06-03-19.log",
+            "hash": "1205dde01f7004175df71dcb9821fa644544369398514dbb573c2a0dde4cc9aa"
+        },
+        {
+            "date": 1685819208500,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\success\\2023-06-04-01.log",
+            "hash": "1fd92cea5ce3f0396edcffb5f87f2e31e370377e8ad9a5bf3622b733ddd2179d"
+        },
+        {
+            "date": 1685822430517,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\success\\2023-06-04-02.log",
+            "hash": "0d8fb8a9985c6dec5673a08afec226affd02731e588ddf130f797e24f4720fc2"
+        },
+        {
+            "date": 1685896899820,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\success\\2023-06-04-22.log",
+            "hash": "d28d40f9e2f9a9ab7f51e62262c8810d7e342115125a42ed7a63e15eec4d8623"
+        },
+        {
+            "date": 1685898677117,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\success\\2023-06-04-23.log",
+            "hash": "37f48d59dc615305db99c188bf37c3896786d8b0ecc2b665c696ebb710323e12"
+        },
+        {
+            "date": 1685901629253,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\success\\2023-06-05-00.log",
+            "hash": "696ba5282b67a32d1e1c45a64ce58dc9d7cf49abf94c298a31aa0d0a9751d05b"
+        },
+        {
+            "date": 1685905201686,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\success\\2023-06-05-01.log",
+            "hash": "07ec9bd7f01d44890bd1c9830343996c7c21c4dd6891285b868629da7d1571e0"
+        },
+        {
+            "date": 1685908825754,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\success\\2023-06-05-02.log",
+            "hash": "5cdfe9fe5320fcf414d0f69c1e419bbcc519f05ec16b658f3263c6c6c01582d3"
+        },
+        {
+            "date": 1685942666481,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\success\\2023-06-05-11.log",
+            "hash": "50ad13c2ce24c33e6bbc6389faa6cc53acb0cfa27825c3d5e7b286fbc11c86c7"
+        },
+        {
+            "date": 1685944859535,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\success\\2023-06-05-12.log",
+            "hash": "c77fdbfa0ceba59f312356943d4e7c0bc151b5642267220423236a95272565c7"
+        },
+        {
+            "date": 1685949126596,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\success\\2023-06-05-13.log",
+            "hash": "fe79e2e493d185b437510a45a09dc3345f923629d222390d41ed75cd22b28b74"
+        },
+        {
+            "date": 1685958955791,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\success\\2023-06-05-15.log",
+            "hash": "8e4a135fcb282b9c902668c60c1431bc461816fcc883d1382bfda5f220a0036f"
+        },
+        {
+            "date": 1685959361101,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\success\\2023-06-05-16.log",
+            "hash": "87e8114715aa3e8483ad58774ac1d8dbd9b486e1bfa8b9d834c66d67b3e0484b"
+        },
+        {
+            "date": 1685977255521,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\success\\2023-06-05-21.log",
+            "hash": "ad1e4063d4e2b46dfac505ab922443be224ccebfc81a260592b7c9c519d7a4d4"
+        },
+        {
+            "date": 1686054304765,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\success\\2023-06-06-18.log",
+            "hash": "a892d992211d1921f83bf5473006a772a8dcfe693835cec063d134912548f514"
+        },
+        {
+            "date": 1686078597706,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\success\\2023-06-07-01.log",
+            "hash": "ef951506d4db29a989f97f076cb390444201a69b6bcbaa52f52bc433109414f2"
+        },
+        {
+            "date": 1686081600947,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\success\\2023-06-07-02.log",
+            "hash": "bf8c19126e03ee83123b824e96c017101d4cae15731311415aefaa65d6908d76"
+        }
+    ],
+    "hashType": "sha256"
 }

@@ -2,6 +2,7 @@
 import { createLogger, format, transports } from 'winston'
 import DailyRotateFile from 'winston-daily-rotate-file'
 import path from 'path'
+import { NextFunction, Request, Response } from 'express'
 
 const { combine, label, prettyPrint, printf } = format
 
@@ -70,4 +71,34 @@ const errorLogger = createLogger({
   ],
 })
 
-export { logger, errorLogger }
+const apiLogger = createLogger({
+  level: 'info',
+  format: combine(
+    label({ label: 'University Management System' }),
+    prettyPrint(),
+    myFormat
+  ),
+  transports: [
+    new transports.Console(),
+    new DailyRotateFile({
+      filename: path.join(
+        process.cwd(),
+        'logs',
+        'winston',
+        'apiRequest',
+        '%DATE%.log'
+      ),
+      datePattern: 'YYYY-MM-DD-HH',
+      zippedArchive: true,
+      maxSize: '30m',
+      maxFiles: '1d',
+    }),
+  ],
+})
+
+const requestLogger = (req: Request, res: Response, next: NextFunction) => {
+  apiLogger.info(`[${req.method}] ${req.originalUrl}`)
+  next()
+}
+
+export { logger, errorLogger, requestLogger }
