@@ -6,19 +6,24 @@
     "auditLog": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\apiRequest\\.6376cdab765dbf07bfd46b06c134220b259415b6-audit.json",
     "files": [
         {
-            "date": 1686054304792,
-            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\apiRequest\\2023-06-06-18.log",
-            "hash": "969c4248454d1cb1a4cfe366ea8b035f964b3695c7f3e5d30aaaf9f9fd15132b"
+            "date": 1686332061836,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\apiRequest\\2023-06-09-23.log",
+            "hash": "36656726bcedd3b5cf2c12de3429da098ebfe816e523c57d0c1ef4a764f52154"
         },
         {
-            "date": 1686078597727,
-            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\apiRequest\\2023-06-07-01.log",
-            "hash": "1b584d9f2a6a8b2354c17242ea56fce6c080246c5da3a6e11c23e17e5de08d6f"
+            "date": 1686333654171,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\apiRequest\\2023-06-10-00.log",
+            "hash": "070dc510ba6ab71730ab8739fe2046b7cec9fc5cf79e1f38567b3df4cd0fb271"
         },
         {
-            "date": 1686081604262,
-            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\apiRequest\\2023-06-07-02.log",
-            "hash": "d3c22312a782576bd76b633e811c2bd72d942021cff04f18a58c35b17217b030"
+            "date": 1686337213894,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\apiRequest\\2023-06-10-01.log",
+            "hash": "e011f29d45b1c74c20211cbaa700ef15c51462d9ef28f41a6a518402d2c4cf43"
+        },
+        {
+            "date": 1686342898505,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\apiRequest\\2023-06-10-02.log",
+            "hash": "65a73c64b8a076700ac1f4490b2af0b60e765d2077d041ce5b753f3441708986"
         }
     ],
     "hashType": "sha256"

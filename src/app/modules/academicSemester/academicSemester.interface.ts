@@ -14,7 +14,7 @@ export type Month =
   | 'November'
   | 'December';
 
-export type Title = 'Autum' | 'Summar' | 'Fall';
+export type Title = 'Autumn' | 'Summar' | 'Fall';
 
 export type Code = '01' | '02' | '03';
 

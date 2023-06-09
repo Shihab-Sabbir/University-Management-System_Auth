@@ -3,6 +3,7 @@ import ApiError from '../../../errors/ApiError';
 import { academicSemesterTitleCodeMapper } from './academicSemester.constant';
 import { IAcademicSemester } from './academicSemester.interface';
 import academicSemester from './academicSemester.model';
+import { IPaginationOptions } from '../../../shared/interfaces/interfaces';
 
 const createSemester = async (
   semesterinfo: IAcademicSemester
@@ -16,6 +17,14 @@ const createSemester = async (
   return createdSemester;
 };
 
+const getSemesters = async (
+  paginationOptions: IPaginationOptions
+): Promise<IAcademicSemester | IAcademicSemester[] | null> => {
+  const semesters = await academicSemester.find();
+  return semesters;
+};
+
 export const AcademicSemesterService = {
   createSemester,
+  getSemesters,
 };

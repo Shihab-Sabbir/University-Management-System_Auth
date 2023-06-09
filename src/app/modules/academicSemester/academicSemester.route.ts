@@ -10,4 +10,9 @@ academicSemesterRoutes.post(
   AcademicSemesterController.createSemester
 );
 
+academicSemesterRoutes.get(
+  '/get-semester',
+  AcademicSemesterController.getSemesters
+);
+
 export default academicSemesterRoutes;

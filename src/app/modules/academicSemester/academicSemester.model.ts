@@ -52,7 +52,7 @@ academicSemesterSchema.pre('save', async function (next) {
   if (isExist) {
     throw new ApiError(
       httpStatus.CONFLICT,
-      'Academic semester already exists !'
+      'Academic semester is already exist !'
     );
   }
   next(); // this next is not express next , its mongoose pre hook next !

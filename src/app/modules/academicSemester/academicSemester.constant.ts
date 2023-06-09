@@ -15,7 +15,7 @@ export const monthEnum: Month[] = [
   'December',
 ];
 
-export const titleEnum: Title[] = ['Autum', 'Summar', 'Fall'];
+export const titleEnum: Title[] = ['Autumn', 'Summar', 'Fall'];
 
 export const codeEnum: Code[] = ['01', '02', '03'];
 

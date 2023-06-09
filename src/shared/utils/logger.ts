@@ -1,20 +1,20 @@
 /* eslint-disable no-undef */
-import { createLogger, format, transports } from 'winston'
-import DailyRotateFile from 'winston-daily-rotate-file'
-import path from 'path'
-import { NextFunction, Request, Response } from 'express'
+import { createLogger, format, transports } from 'winston';
+import DailyRotateFile from 'winston-daily-rotate-file';
+import path from 'path';
+import { NextFunction, Request, Response } from 'express';
 
-const { combine, label, prettyPrint, printf } = format
+const { combine, label, prettyPrint, printf } = format;
 
 //custom log format
 const myFormat = printf(({ level, message, label }) => {
-  const date = new Date()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
+  const date = new Date();
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+  const second = date.getSeconds();
 
-  return `${date.toDateString()} ${hour}:${minute}:${second} [${label}] ${level}: ${message}`
-})
+  return `${date.toDateString()} ${hour}:${minute}:${second} [${label}] ${level}: ${message}`;
+});
 
 const logger = createLogger({
   level: 'info',
@@ -44,7 +44,7 @@ const logger = createLogger({
     //   level: 'info',
     // }),
   ],
-})
+});
 
 const errorLogger = createLogger({
   level: 'error',
@@ -69,7 +69,7 @@ const errorLogger = createLogger({
       maxFiles: '1d',
     }),
   ],
-})
+});
 
 const apiLogger = createLogger({
   level: 'info',
@@ -94,11 +94,11 @@ const apiLogger = createLogger({
       maxFiles: '1d',
     }),
   ],
-})
+});
 
 const requestLogger = (req: Request, res: Response, next: NextFunction) => {
-  apiLogger.info(`[${req.method}] ${req.originalUrl}`)
-  next()
-}
+  apiLogger.info(`[${req.method}] ${req.originalUrl}`);
+  next();
+};
 
-export { logger, errorLogger, requestLogger }
+export { logger, errorLogger, requestLogger };

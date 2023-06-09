@@ -1,6 +1,6 @@
-import { Error as MongooseError, CastError } from 'mongoose'
-import { IGenericErrorMessage } from './interfaces/IGenericErrorMessage'
-import { IGenericErrorResponse } from './interfaces/IGenericErrorResponse'
+import { Error as MongooseError, CastError } from 'mongoose';
+import { IGenericErrorMessage } from './interfaces/IGenericErrorMessage';
+import { IGenericErrorResponse } from './interfaces/IGenericErrorResponse';
 
 const handleMongooseValidationError = (
   err: MongooseError.ValidationError
@@ -10,15 +10,15 @@ const handleMongooseValidationError = (
       return {
         path: er.path,
         message: er.message,
-      }
+      };
     }
-  )
+  );
 
   return {
     statusCode: 400,
     message: 'Something went wrong',
     errorMessages: error,
-  }
-}
+  };
+};
 
-export default handleMongooseValidationError
+export default handleMongooseValidationError;
