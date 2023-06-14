@@ -1,3 +1,0 @@
-Sat Jun 10 2023 2:55:17 [University Management System] info: [GET] /api/v1/semesters/get-semester?page=1&limit=10&sortBy=%27year%27&orderBy=%27asc%27
-Sat Jun 10 2023 2:55:36 [University Management System] info: [GET] /api/v1/semesters/get-semester?page=1&limit=10&sortBy=year&orderBy=asc
-Sat Jun 10 2023 2:55:57 [University Management System] info: [GET] /api/v1/semesters/get-semester?page=1&limit=10&sortBy=year&sortOrder=asc

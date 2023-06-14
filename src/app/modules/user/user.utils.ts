@@ -1,23 +1,61 @@
+import { IAcademicSemester } from '../academicSemester/academicSemester.interface';
 import User from './user.model';
 
-export const findLastUserId = async () => {
-  const lastUser = await User.findOne({}, { _id: 0, id: 1 })
-    .sort({
-      createdAt: -1,
-    })
+export const findLastTargetUserId = async (
+  role: string
+): Promise<string | undefined> => {
+  const lastUser = await User.findOne({ role: role }, { _id: 0, id: 1 })
+    .sort({ createdAt: -1 })
     .lean();
-  // lean() used for get a pure js object not mongodb document.
+
   return lastUser?.id;
 };
 
-export const generateUserId = async () => {
-  const id = await findLastUserId();
-  let currentId: string;
-  if (!id) {
-    currentId = (1).toString().padStart(5, '0');
-  } else {
-    currentId = (parseInt(id) + 1).toString().padStart(5, '0');
-    //padStart 5,0 means : the digit will be 5 and empty digits will be replaced with 0 at starting point.
+export const generateUserId = async (
+  role: string,
+  academicSemester?: IAcademicSemester
+): Promise<string | undefined> => {
+  try {
+    let id = await findLastTargetUserId(role);
+
+    if (id) {
+      switch (role) {
+        case 'student':
+          id = id.substring(4);
+          break;
+        case 'faculty':
+        case 'admin':
+          id = id.substring(2);
+          break;
+        default:
+          throw new Error('Invalid role');
+      }
+    } else {
+      id = '0';
+    }
+
+    const lastIdNumber = parseInt(id);
+    const newIdNumber = lastIdNumber + 1;
+    const paddedId = newIdNumber.toString().padStart(5, '0');
+
+    switch (role) {
+      case 'student':
+        if (!academicSemester) {
+          throw new Error('Missing academic semester for student role');
+        }
+        const yearSubstring = academicSemester.year?.slice(2);
+        const codeSubstring = academicSemester.code;
+        return `${yearSubstring}${codeSubstring}${paddedId}`;
+
+      case 'faculty':
+      case 'admin':
+        return `${role.charAt(0).toUpperCase()}-${paddedId}`;
+
+      default:
+        throw new Error('Invalid role');
+    }
+  } catch (error) {
+    console.log(error);
+    return undefined;
   }
-  return currentId;
 };

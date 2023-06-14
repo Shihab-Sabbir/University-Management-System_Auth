@@ -14,14 +14,14 @@ export type Month =
   | 'November'
   | 'December';
 
-export type Title = 'Autumn' | 'Summar' | 'Fall';
+export type Title = 'Autumn' | 'Summer' | 'Fall';
 
 export type Code = '01' | '02' | '03';
 
 export type IAcademicSemester = {
   //here type is one kind of interface suggested by lintin
   title: Title;
-  year: number;
+  year: string;
   code: Code;
   startMonth: Month;
   endMonth: Month;
@@ -33,3 +33,7 @@ export type AcademicSemesterModel = Model<
 >;
 // here Record<string, unknown> is the replacement of {}.
 // here UserModel is used if any future methods are added to this model. withour methods this type UserModel is not required. only Iuser in enough.
+
+export type ISemesterFilters = {
+  searchTerm?: string;
+};

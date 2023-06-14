@@ -4,3 +4,14 @@ export type IPaginationOptions = {
   sortBy: string;
   sortOrder: 'asc' | 'desc';
 };
+
+export type IGenericPaginationResponse<T> = {
+  meta: {
+    page: number;
+    limit: number;
+    total: number;
+  };
+  data: T;
+};
+
+export type CustomPaginationOptions = IPaginationOptions & { skip: number };

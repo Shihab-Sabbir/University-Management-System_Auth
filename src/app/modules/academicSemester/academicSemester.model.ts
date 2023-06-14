@@ -18,7 +18,7 @@ const academicSemesterSchema = new Schema<
       enum: titleEnum,
     },
     year: {
-      type: Number,
+      type: String,
       required: true,
     },
     code: {
@@ -39,6 +39,9 @@ const academicSemesterSchema = new Schema<
   },
   {
     timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
   }
 );
 

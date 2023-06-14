@@ -15,7 +15,7 @@ export const monthEnum: Month[] = [
   'December',
 ];
 
-export const titleEnum: Title[] = ['Autumn', 'Summar', 'Fall'];
+export const titleEnum: Title[] = ['Autumn', 'Summer', 'Fall'];
 
 export const codeEnum: Code[] = ['01', '02', '03'];
 
@@ -26,3 +26,10 @@ export const academicSemesterTitleCodeMapper: {
   Summer: '02',
   Fall: '03',
 };
+
+export const semesterSearchAndFilterFields = [
+  'searchTerm',
+  'title',
+  'code',
+  'year',
+];
