@@ -1,22 +1,9 @@
 import httpStatus from 'http-status';
 import ApiError from '../../../errors/ApiError';
-import {
-  academicSemesterTitleCodeMapper,
-  semesterSearchAndFilterFields,
-} from './academicSemester.constant';
-import {
-  IAcademicSemester,
-  ISemesterFilters,
-} from './academicSemester.interface';
+import { academicSemesterTitleCodeMapper } from './academicSemester.constant';
+import { IAcademicSemester } from './academicSemester.interface';
 import academicSemester from './academicSemester.model';
-import {
-  CustomPaginationOptions,
-  IGenericPaginationResponse,
-  IPaginationOptions,
-} from '../../../shared/interfaces/interfaces';
-import paginationHelper from '../../../shared/utils/pagination/paginationHelper';
-import sortFunction from '../../../shared/utils/pagination/sortFunction';
-import searchAndFilterHelper from '../../../shared/utils/filter/searchAndFilterHelper';
+import { IGenericPaginationResponse } from '../../../shared/interfaces/interfaces';
 
 const createSemester = async (
   semesterinfo: IAcademicSemester
@@ -31,30 +18,20 @@ const createSemester = async (
 };
 
 const getSemesters = async (
-  filters: ISemesterFilters,
-  paginationOptions: Partial<IPaginationOptions>
+  searchFilterAndPaginationOptions: any
 ): Promise<IGenericPaginationResponse<IAcademicSemester[] | []>> => {
-  const { page, limit, skip, sortBy, sortOrder }: CustomPaginationOptions =
-    paginationHelper(paginationOptions);
+  const { searchAndFilter, page, limit, skip, sort } =
+    searchFilterAndPaginationOptions;
 
-  const sortOptions = sortFunction(sortBy, sortOrder);
-  const { searchTerm, ...filtersData } = filters;
-
-  const searchAndFilter = searchAndFilterHelper(
-    searchTerm,
-    filtersData,
-    semesterSearchAndFilterFields
-  );
-
-  const semesters = await academicSemester
+  const semesters: IAcademicSemester[] | [] = await academicSemester
     .find(searchAndFilter)
     .skip(skip)
-    .sort(sortOptions)
-    .limit(limit);
+    .sort(sort)
+    .limit(limit as number);
 
-  const total = await academicSemester.countDocuments();
+  const total = await academicSemester.countDocuments(searchAndFilter);
 
-  const result = {
+  const result: IGenericPaginationResponse<IAcademicSemester[] | []> = {
     meta: {
       page,
       limit,
@@ -62,6 +39,7 @@ const getSemesters = async (
     },
     data: semesters,
   };
+
   return result;
 };
 
@@ -93,10 +71,10 @@ const updateSemester = async (
 const deleteSemester = async (
   id: string
 ): Promise<IAcademicSemester | null> => {
-  const deleteedSemester = await academicSemester.findByIdAndDelete({
+  const deletedSemester = await academicSemester.findByIdAndDelete({
     _id: id,
   });
-  return deleteedSemester;
+  return deletedSemester;
 };
 
 export const AcademicSemesterService = {

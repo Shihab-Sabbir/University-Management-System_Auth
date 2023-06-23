@@ -1,13 +1,11 @@
 import httpStatus from 'http-status';
 import { AcademicSemesterService } from './academicSemester.service';
 import catchAsync from '../../../shared/utils/catchAsync';
-import { NextFunction, Request, RequestHandler, Response } from 'express';
+import { Request, RequestHandler, Response } from 'express';
 import sendResponse from '../../../shared/utils/sendResponse';
-import { IPaginationOptions } from '../../../shared/interfaces/interfaces';
-import { paginationFields } from '../../../shared/constants/pagination';
-import pick from '../../../shared/utils/pick';
 import { semesterSearchAndFilterFields } from './academicSemester.constant';
 import { IAcademicSemester } from './academicSemester.interface';
+import { getSearchAndPaginationOptions } from '../../../shared/utils/searchAndPagination/getSearchAndPaginationOptions';
 
 const createSemester = catchAsync(async (req: Request, res: Response) => {
   // to remove the repeatative try catch , a higher order function catchAsync is used here.
@@ -24,16 +22,12 @@ const createSemester = catchAsync(async (req: Request, res: Response) => {
 
 const getSemesters: RequestHandler = async (req, res, next) => {
   try {
-    const paginationOptions: Partial<IPaginationOptions> = pick(
+    const searchFilterAndPaginationOptions = getSearchAndPaginationOptions(
       req.query,
-      paginationFields
+      semesterSearchAndFilterFields
     );
-    const filters = pick(req.query, semesterSearchAndFilterFields);
 
-    const result = await AcademicSemesterService.getSemesters(
-      filters,
-      paginationOptions
-    );
+    const result = await AcademicSemesterService.getSemesters(searchFilterAndPaginationOptions);
 
     sendResponse<IAcademicSemester[]>(res, {
       success: true,

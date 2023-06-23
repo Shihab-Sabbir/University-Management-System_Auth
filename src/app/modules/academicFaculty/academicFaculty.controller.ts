@@ -8,6 +8,7 @@ import { paginationFields } from '../../../shared/constants/pagination';
 import pick from '../../../shared/utils/pick';
 import { FacultySearchAndFilterFields } from './academicFaculty.constant';
 import { IAcademicFaculty } from './academicFaculty.interface';
+import { getSearchAndPaginationOptions } from '../../../shared/utils/searchAndPagination/getSearchAndPaginationOptions';
 
 const createFaculty = catchAsync(async (req: Request, res: Response) => {
   const FacultyInfo: IAcademicFaculty = req.body;
@@ -22,15 +23,11 @@ const createFaculty = catchAsync(async (req: Request, res: Response) => {
 
 const getFaculties: RequestHandler = async (req, res, next) => {
   try {
-    const paginationOptions: Partial<IPaginationOptions> = pick(
+    const searchFilterAndPaginationOptions = getSearchAndPaginationOptions(
       req.query,
-      paginationFields
+      FacultySearchAndFilterFields
     );
-    const filters = pick(req.query, FacultySearchAndFilterFields);
-    const result = await AcademicFacultyService.getFacultys(
-      filters,
-      paginationOptions
-    );
+    const result = await AcademicFacultyService.getFaculties(searchFilterAndPaginationOptions);
 
     sendResponse<IAcademicFaculty[]>(res, {
       success: true,

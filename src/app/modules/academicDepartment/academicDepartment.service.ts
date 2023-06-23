@@ -1,17 +1,6 @@
-import {
-  IAcademicDepartment,
-  IDepartmentFilters,
-} from './academicDepartment.interface';
+import { IAcademicDepartment } from './academicDepartment.interface';
 import academicDepartment from './academicDepartment.model';
-import {
-  CustomPaginationOptions,
-  IGenericPaginationResponse,
-  IPaginationOptions,
-} from '../../../shared/interfaces/interfaces';
-import paginationHelper from '../../../shared/utils/pagination/paginationHelper';
-import sortFunction from '../../../shared/utils/pagination/sortFunction';
-import searchAndFilterHelper from '../../../shared/utils/filter/searchAndFilterHelper';
-import { departmentSearchAndFilterFields } from './academicDepartment.constant';
+import { IGenericPaginationResponse } from '../../../shared/interfaces/interfaces';
 
 const createDepartment = async (
   departmentinfo: IAcademicDepartment
@@ -21,31 +10,21 @@ const createDepartment = async (
 };
 
 const getDepartments = async (
-  filters: IDepartmentFilters,
-  paginationOptions: Partial<IPaginationOptions>
+  searchFilterAndPaginationOptions: any
 ): Promise<IGenericPaginationResponse<IAcademicDepartment[] | []>> => {
-  const { page, limit, skip, sortBy, sortOrder }: CustomPaginationOptions =
-    paginationHelper(paginationOptions);
+  const { searchAndFilter, page, limit, skip, sort } =
+    searchFilterAndPaginationOptions;
 
-  const sortOptions = sortFunction(sortBy, sortOrder);
-  const { searchTerm, ...filtersData } = filters;
-
-  const searchAndFilter = searchAndFilterHelper(
-    searchTerm,
-    filtersData,
-    departmentSearchAndFilterFields
-  );
-
-  const Departments = await academicDepartment
+  const Departments: IAcademicDepartment[] | [] = await academicDepartment
     .find(searchAndFilter)
     .populate('academicFaculty')
     .skip(skip)
-    .sort(sortOptions)
+    .sort(sort)
     .limit(limit);
 
-  const total = await academicDepartment.countDocuments();
+  const total = await academicDepartment.countDocuments(searchAndFilter);
 
-  const result = {
+  const result: IGenericPaginationResponse<IAcademicDepartment[] | []> = {
     meta: {
       page,
       limit,
@@ -78,10 +57,10 @@ const updateDepartment = async (
 const deleteDepartment = async (
   id: string
 ): Promise<IAcademicDepartment | null> => {
-  const deleteedDepartment = await academicDepartment.findByIdAndDelete({
+  const deletedDepartment = await academicDepartment.findByIdAndDelete({
     _id: id,
   });
-  return deleteedDepartment;
+  return deletedDepartment;
 };
 
 export const AcademicDepartmentService = {

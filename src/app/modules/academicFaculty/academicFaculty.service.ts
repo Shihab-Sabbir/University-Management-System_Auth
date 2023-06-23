@@ -1,14 +1,6 @@
-import { FacultySearchAndFilterFields } from './academicFaculty.constant';
-import { IAcademicFaculty, IFacultyFilters } from './academicFaculty.interface';
+import { IAcademicFaculty } from './academicFaculty.interface';
 import academicFaculty from './academicFaculty.model';
-import {
-  CustomPaginationOptions,
-  IGenericPaginationResponse,
-  IPaginationOptions,
-} from '../../../shared/interfaces/interfaces';
-import paginationHelper from '../../../shared/utils/pagination/paginationHelper';
-import sortFunction from '../../../shared/utils/pagination/sortFunction';
-import searchAndFilterHelper from '../../../shared/utils/filter/searchAndFilterHelper';
+import { IGenericPaginationResponse } from '../../../shared/interfaces/interfaces';
 
 const createFaculty = async (
   Facultyinfo: IAcademicFaculty
@@ -17,37 +9,27 @@ const createFaculty = async (
   return createdFaculty;
 };
 
-const getFacultys = async (
-  filters: IFacultyFilters,
-  paginationOptions: Partial<IPaginationOptions>
+const getFaculties = async (
+  searchFilterAndPaginationOptions: any
 ): Promise<IGenericPaginationResponse<IAcademicFaculty[] | []>> => {
-  const { page, limit, skip, sortBy, sortOrder }: CustomPaginationOptions =
-    paginationHelper(paginationOptions);
+  const { searchAndFilter, page, limit, skip, sort } =
+    searchFilterAndPaginationOptions;
 
-  const sortOptions = sortFunction(sortBy, sortOrder);
-  const { searchTerm, ...filtersData } = filters;
-
-  const searchAndFilter = searchAndFilterHelper(
-    searchTerm,
-    filtersData,
-    FacultySearchAndFilterFields
-  );
-
-  const Facultys = await academicFaculty
+  const Faculties: IAcademicFaculty[] | [] = await academicFaculty
     .find(searchAndFilter)
     .skip(skip)
-    .sort(sortOptions)
+    .sort(sort)
     .limit(limit);
 
-  const total = await academicFaculty.countDocuments();
+  const total = await academicFaculty.countDocuments(searchAndFilter);
 
-  const result = {
+  const result: IGenericPaginationResponse<IAcademicFaculty[] | []> = {
     meta: {
       page,
       limit,
       total,
     },
-    data: Facultys,
+    data: Faculties,
   };
   return result;
 };
@@ -72,15 +54,15 @@ const updateFaculty = async (
 };
 
 const deleteFaculty = async (id: string): Promise<IAcademicFaculty | null> => {
-  const deleteedFaculty = await academicFaculty.findByIdAndDelete({
+  const deletedFaculty = await academicFaculty.findByIdAndDelete({
     _id: id,
   });
-  return deleteedFaculty;
+  return deletedFaculty;
 };
 
 export const AcademicFacultyService = {
   createFaculty,
-  getFacultys,
+  getFaculties,
   getSingleFaculty,
   updateFaculty,
   deleteFaculty,

@@ -14,4 +14,11 @@ export type IGenericPaginationResponse<T> = {
   data: T;
 };
 
-export type CustomPaginationOptions = IPaginationOptions & { skip: number };
+export type CustomPaginationOptions = {
+  skip: number;
+  page: number;
+  limit: number;
+  sort: {
+    [x: string]: 'asc' | 'desc';
+  };
+};

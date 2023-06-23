@@ -1,10 +1,14 @@
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
+import { IStudent } from '../student/student.interface';
 
 export type IUser = {
   //here type is one kind of interface
   id: string;
-  role: string;
+  role?: string;
   password: string;
+  student?: Types.ObjectId | IStudent;
+  faculty?: Types.ObjectId;
+  admin?: Types.ObjectId;
 };
 
 export type UserModel = Model<IUser, Record<string, unknown>>;

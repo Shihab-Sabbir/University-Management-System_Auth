@@ -1,16 +1,10 @@
 import httpStatus from 'http-status';
 import { AcademicDepartmentService } from './academicDepartment.service';
-import catchAsync from '../../../shared/utils/catchAsync';
 import { Request, RequestHandler, Response } from 'express';
 import sendResponse from '../../../shared/utils/sendResponse';
-import { IPaginationOptions } from '../../../shared/interfaces/interfaces';
-import { paginationFields } from '../../../shared/constants/pagination';
-import pick from '../../../shared/utils/pick';
 import { departmentSearchAndFilterFields } from './academicDepartment.constant';
-import {
-  IAcademicDepartment,
-  IDepartmentFilters,
-} from './academicDepartment.interface';
+import { IAcademicDepartment } from './academicDepartment.interface';
+import { getSearchAndPaginationOptions } from '../../../shared/utils/searchAndPagination/getSearchAndPaginationOptions';
 
 const createDepartment = async (req: Request, res: Response) => {
   const DepartmentInfo: IAcademicDepartment = req.body;
@@ -27,18 +21,13 @@ const createDepartment = async (req: Request, res: Response) => {
 
 const getDepartments: RequestHandler = async (req, res, next) => {
   try {
-    const paginationOptions: Partial<IPaginationOptions> = pick(
-      req.query,
-      paginationFields
-    );
-    const filters: IDepartmentFilters = pick(
+    const searchFilterAndPaginationOptions = getSearchAndPaginationOptions(
       req.query,
       departmentSearchAndFilterFields
     );
 
     const result = await AcademicDepartmentService.getDepartments(
-      filters,
-      paginationOptions
+      searchFilterAndPaginationOptions
     );
 
     sendResponse<IAcademicDepartment[]>(res, {
