@@ -6,9 +6,14 @@
     "auditLog": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\error\\.817f80972b9c025351bafc3c7640985890bab099-audit.json",
     "files": [
         {
-            "date": 1687419982777,
-            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\error\\2023-06-22-13.log",
-            "hash": "8c61fefe66338b3776b25ff3bda60f8a5649e350ed443769618fcbe073810f98"
+            "date": 1687608292215,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\error\\2023-06-24-18.log",
+            "hash": "c5c7598d75eef014f8a04a7db4cffca11bf8666d9ef716533d7531fb6c3ddcac"
+        },
+        {
+            "date": 1687638824168,
+            "name": "E:\\Next level course\\Main Project\\University Management - Auth service\\logs\\winston\\error\\2023-06-25-02.log",
+            "hash": "f3b94aeb37e1053dcde727da41b33aef4b125bde10447971c3961ab1f33d797f"
         }
     ],
     "hashType": "sha256"

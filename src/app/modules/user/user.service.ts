@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
-import { DEFAULT_PASS } from '../../../config';
+import bcrypt from 'bcrypt';
+import { BCRYPT_SALT_ROUNDS, DEFAULT_PASS } from '../../../config';
 import { IStudent } from '../student/student.interface';
 import { IAcademicSemester } from '../academicSemester/academicSemester.interface';
 import AcademicSemester from '../academicSemester/academicSemester.model';
@@ -16,9 +17,11 @@ const createStudent = async (
   userInfo: IUser
 ): Promise<IUser | null> => {
   const { password } = userInfo;
+
   if (!password) {
     userInfo.password = DEFAULT_PASS as string;
   }
+
   userInfo.role = 'student';
 
   const academicSemester = await AcademicSemester.findById(
@@ -60,10 +63,10 @@ const createStudent = async (
 
     await session.commitTransaction(); // Commit the transaction as it was successful
     await session.endSession();
-  } catch (error) {
+  } catch (error:any) {
     await session.abortTransaction(); // Rollback the transaction if an error occurred
     await session.endSession();
-    throw new ApiError(400, 'Failed to create!');
+    throw new ApiError(400, error);
   }
 
   if (newUserPoulatedData) {
@@ -122,10 +125,10 @@ const createFaculty = async (
 
     await session.commitTransaction(); // Commit the transaction as it was successful
     await session.endSession();
-  } catch (error) {
+  } catch (error: any) {
     await session.abortTransaction(); // Rollback the transaction if an error occurred
     await session.endSession();
-    throw new ApiError(400, 'Failed to create!');
+    throw new ApiError(400, error);
   }
 
   if (newUserPoulatedData) {
@@ -189,10 +192,10 @@ const createAdmin = async (
 
     await session.commitTransaction(); // Commit the transaction as it was successful
     await session.endSession();
-  } catch (error) {
+  } catch (error:any) {
     await session.abortTransaction(); // Rollback the transaction if an error occurred
     await session.endSession();
-    throw new ApiError(400, 'Failed to create!');
+    throw new ApiError(400, error);
   }
 
   if (newUserPoulatedData) {

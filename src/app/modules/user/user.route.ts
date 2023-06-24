@@ -1,6 +1,10 @@
 import express from 'express';
 import { UserController } from './user.controller';
-import { createAdminZodSchema, createFacultyZodSchema, createStudentZodSchema } from './user.validation';
+import {
+  createAdminZodSchema,
+  createFacultyZodSchema,
+  createStudentZodSchema,
+} from './user.validation';
 import validateRequest from '../../middlewares/validateRequest';
 const userRoutes = express.Router();
 

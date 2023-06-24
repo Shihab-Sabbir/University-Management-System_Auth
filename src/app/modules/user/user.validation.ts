@@ -42,7 +42,7 @@ export const createStudentZodSchema = z.object({
           required_error: 'Present address is required',
         }),
         permanentAddress: z.string({
-          required_error: 'Parmanent address is required',
+          required_error: 'Permanent address is required',
         }),
         guardian: z
           .object({

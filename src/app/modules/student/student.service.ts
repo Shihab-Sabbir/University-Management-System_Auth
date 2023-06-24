@@ -6,7 +6,12 @@ import {
   studentFilterFields,
   studentSearchFields,
 } from '../student/student.constant';
-import { IGuardian, ILocalGuardian, IName, IStudent } from '../student/student.interface';
+import {
+  IGuardian,
+  ILocalGuardian,
+  IName,
+  IStudent,
+} from '../student/student.interface';
 import Student from '../student/student.model';
 
 const getStudents = async (query: any) => {

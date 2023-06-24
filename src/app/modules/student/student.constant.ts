@@ -14,4 +14,3 @@ export const studentSearchFields = [
   'email',
   'contactNo',
 ];
- 

@@ -4,8 +4,8 @@ import validateRequest from '../../middlewares/validateRequest';
 import { updateStudentZodSchema } from './student.validation';
 const studentRoutes = express.Router();
 
-studentRoutes.get('/get-students', StudentController.getStudents);
-studentRoutes.get('/get-student/:id', StudentController.getSingleStudent);
+studentRoutes.get('/', StudentController.getStudents);
+studentRoutes.get('/:id', StudentController.getSingleStudent);
 studentRoutes.patch(
   '/:id',
   validateRequest(updateStudentZodSchema),

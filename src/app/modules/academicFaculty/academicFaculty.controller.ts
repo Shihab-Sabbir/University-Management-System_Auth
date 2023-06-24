@@ -27,7 +27,9 @@ const getFaculties: RequestHandler = async (req, res, next) => {
       req.query,
       FacultySearchAndFilterFields
     );
-    const result = await AcademicFacultyService.getFaculties(searchFilterAndPaginationOptions);
+    const result = await AcademicFacultyService.getFaculties(
+      searchFilterAndPaginationOptions
+    );
 
     sendResponse<IAcademicFaculty[]>(res, {
       success: true,

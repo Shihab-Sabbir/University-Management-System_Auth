@@ -5,10 +5,12 @@ import globalErrorHandler from './app/middlewares/globalErrorHandler';
 import { requestLogger } from './shared/utils/logger';
 import routes from './routes';
 import { handleNoRouteFound } from './errors/handleNoRouteFound';
+import cookieParser from 'cookie-parser';
 
 const app: Application = express();
 
 app.use(cors());
+app.use(cookieParser());
 
 //parser
 app.use(bodyParser.json());

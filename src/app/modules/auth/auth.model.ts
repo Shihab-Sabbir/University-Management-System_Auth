@@ -1,5 +1,5 @@
 import { Schema, Types, model } from 'mongoose';
-import { FacultyModel, IFaculty } from './faculty.interface';
+import { FacultyModel, IFaculty } from './auth.interface';
 
 const FacultySchema = new Schema<IFaculty, FacultyModel>(
   {

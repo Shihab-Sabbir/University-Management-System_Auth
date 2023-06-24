@@ -20,12 +20,16 @@ const sendResponse = <T>(res: Response, data: IApiResponse<T>): void => {
     result = null,
     statusCode,
   } = data;
-  res.status(statusCode).send({
-    success: success,
-    message: message,
-    meta: meta,
-    data: result,
-  });
+
+  const response = {
+    success,
+    ...(message && { message }),
+    ...(meta && { meta }),
+    ...(result && { result }),
+    statusCode,
+  };
+
+  res.status(statusCode).send(response);
 };
 
 export default sendResponse;

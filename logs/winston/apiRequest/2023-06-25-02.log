@@ -1,0 +1,12 @@
+Sun Jun 25 2023 2:42:19 [University Management System] info: [POST] /api/v1/auth/login
+Sun Jun 25 2023 2:42:57 [University Management System] info: [POST] /api/v1/auth/login
+Sun Jun 25 2023 2:44:5 [University Management System] info: [GET] /api/v1/students
+Sun Jun 25 2023 2:44:7 [University Management System] info: [GET] /api/v1/students
+Sun Jun 25 2023 2:45:9 [University Management System] info: [GET] /api/v1/students
+Sun Jun 25 2023 2:45:11 [University Management System] info: [GET] /api/v1/students
+Sun Jun 25 2023 2:45:12 [University Management System] info: [GET] /api/v1/students
+Sun Jun 25 2023 2:45:12 [University Management System] info: [GET] /api/v1/students
+Sun Jun 25 2023 2:45:14 [University Management System] info: [GET] /api/v1/students
+Sun Jun 25 2023 2:46:16 [University Management System] info: [GET] /api/v1/students
+Sun Jun 25 2023 2:46:38 [University Management System] info: [POST] /api/v1/auth/login
+Sun Jun 25 2023 2:46:52 [University Management System] info: [POST] /api/v1/auth/login

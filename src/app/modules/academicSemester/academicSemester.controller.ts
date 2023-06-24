@@ -27,7 +27,9 @@ const getSemesters: RequestHandler = async (req, res, next) => {
       semesterSearchAndFilterFields
     );
 
-    const result = await AcademicSemesterService.getSemesters(searchFilterAndPaginationOptions);
+    const result = await AcademicSemesterService.getSemesters(
+      searchFilterAndPaginationOptions
+    );
 
     sendResponse<IAcademicSemester[]>(res, {
       success: true,
