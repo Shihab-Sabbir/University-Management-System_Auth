@@ -63,7 +63,7 @@ const createStudent = async (
 
     await session.commitTransaction(); // Commit the transaction as it was successful
     await session.endSession();
-  } catch (error:any) {
+  } catch (error: any) {
     await session.abortTransaction(); // Rollback the transaction if an error occurred
     await session.endSession();
     throw new ApiError(400, error);
@@ -192,7 +192,7 @@ const createAdmin = async (
 
     await session.commitTransaction(); // Commit the transaction as it was successful
     await session.endSession();
-  } catch (error:any) {
+  } catch (error: any) {
     await session.abortTransaction(); // Rollback the transaction if an error occurred
     await session.endSession();
     throw new ApiError(400, error);

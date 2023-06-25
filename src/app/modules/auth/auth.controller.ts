@@ -2,9 +2,9 @@ import httpStatus from 'http-status';
 import { RequestHandler } from 'express';
 import { AuthService } from './auth.service';
 import sendResponse from '../../../shared/utils/sendResponse';
-import { ILogin, ILoginResponse } from './auth.interface';
+import { ILogin, ILoginResponse, IRefreshToken } from './auth.interface';
 import { NODE_ENV } from '../../../config';
-
+ 
 const loginUser: RequestHandler = async (req, res, next): Promise<void> => {
   try {
     const payload: ILogin = req.body;
@@ -30,6 +30,25 @@ const loginUser: RequestHandler = async (req, res, next): Promise<void> => {
   }
 };
 
+const UserRefreshToken: RequestHandler = async (req, res, next) => {
+  try {
+    const { refreshToken } = req.cookies;
+    const result = (await AuthService.UserRefreshToken(
+      refreshToken
+    )) as IRefreshToken;
+
+    sendResponse<IRefreshToken>(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      result: result,
+      message: 'Login successfully !',
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
 export const AuthController = {
   loginUser,
+  UserRefreshToken,
 };

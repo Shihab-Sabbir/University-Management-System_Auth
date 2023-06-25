@@ -1,7 +1,8 @@
+import jwt, { JwtPayload } from 'jsonwebtoken';
 import httpStatus from 'http-status';
 import ApiError from '../../../errors/ApiError';
 import User from '../user/user.model';
-import { ILogin, ILoginResponse } from './auth.interface';
+import { ILogin, ILoginResponse, IRefreshToken } from './auth.interface';
 import {
   JWT_EXPIRES_IN,
   JWT_REFRESH_EXPIRES_IN,
@@ -9,6 +10,7 @@ import {
   JWT_SECRET_REFRESH_KEY,
 } from '../../../config';
 import { generateJWT_Token } from '../../../shared/utils/jwt/generateJWT_Token';
+import { verifyJWT_Token } from '../../../shared/utils/jwt/verifyJWT_Token';
 
 const loginUser = async (loginInfo: ILogin): Promise<ILoginResponse> => {
   const { id, password } = loginInfo;
@@ -57,6 +59,41 @@ const loginUser = async (loginInfo: ILogin): Promise<ILoginResponse> => {
   return result;
 };
 
+const UserRefreshToken = async (
+  refreshToken: string
+): Promise<IRefreshToken> => {
+  const verifiedRefreshToken: JwtPayload | null =
+    (await verifyJWT_Token(refreshToken, JWT_SECRET_REFRESH_KEY as string)) ||
+    null;
+
+  if (!verifiedRefreshToken) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Invalid refresh token!');
+  }
+
+  const { id } = verifiedRefreshToken as JwtPayload;
+
+  // Check if the user is deleted/blocked or not in the database
+  const dbUser = await User.findOne({ id });
+
+  if (!dbUser) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'User does not exist!');
+  }
+
+  // Generate a new token
+  const accessToken = generateJWT_Token(
+    dbUser,
+    JWT_SECRET_KEY as string,
+    JWT_EXPIRES_IN as string
+  );
+
+  const result: IRefreshToken = {
+    accessToken,
+  };
+
+  return result;
+};
+
 export const AuthService = {
   loginUser,
+  UserRefreshToken,
 };

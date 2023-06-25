@@ -1,3 +1,6 @@
+import { Request } from "express";
+import { JwtPayload } from "jsonwebtoken";
+
 export type IPaginationOptions = {
   page: number;
   limit: number;
@@ -22,3 +25,8 @@ export type CustomPaginationOptions = {
     [x: string]: 'asc' | 'desc';
   };
 };
+
+
+export interface IAuthenticatedRequest extends Request {
+  user?: JwtPayload;
+}

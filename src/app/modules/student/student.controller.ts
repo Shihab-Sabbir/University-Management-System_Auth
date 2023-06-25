@@ -11,7 +11,6 @@ const getStudents = async (
 ): Promise<void> => {
   try {
     const result = await StudentService.getStudents(req.query);
-
     sendResponse(res, {
       success: true,
       statusCode: httpStatus.OK,
